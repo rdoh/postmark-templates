@@ -10,7 +10,7 @@
     <style type="text/css" rel="stylesheet" media="all">
     /* Base ------------------------------ */
     
-    @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap");
+    @import url("https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap");
     body {
       width: 100% !important;
       height: 100%;
@@ -19,7 +19,7 @@
     }
     
     a {
-      color: #3869D4;
+      color: #58c4f1;
     }
     
     a img {
@@ -46,7 +46,7 @@
     body,
     td,
     th {
-      font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
     }
     
     h1 {
@@ -106,16 +106,17 @@
     /* Buttons ------------------------------ */
     
     .button {
-      background-color: #3869D4;
-      border-top: 10px solid #3869D4;
-      border-right: 18px solid #3869D4;
-      border-bottom: 10px solid #3869D4;
-      border-left: 18px solid #3869D4;
+      background-color: #58c4f1;
+      border-top: 10px solid #58c4f1;
+      border-right: 18px solid #58c4f1;
+      border-bottom: 10px solid #58c4f1;
+      border-left: 18px solid #58c4f1;
       display: inline-block;
       color: #FFF;
       text-decoration: none;
-      border-radius: 3px;
-      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
+      border-radius: 2em;
+      padding: 5px;
+      /* box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16); */
       -webkit-text-size-adjust: none;
       box-sizing: border-box;
     }
@@ -433,16 +434,16 @@
   <![endif]-->
   </head>
   <body>
-    <span class="preheader">Thanks for trying out [Product Name]. We’ve pulled together some information and resources to help you get started.</span>
+    <span class="preheader">Thank you for joining localtrailerhire.com.au. To complete your signup please verify your email.</span>
     <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
       <tr>
         <td align="center">
           <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
             <tr>
               <td class="email-masthead">
-                <a href="https://example.com" class="f-fallback email-masthead_name">
-                [Product Name]
-              </a>
+                <a href="{{marketplace.url}}" class="f-fallback email-masthead_name">
+                  <img src="https://localtrailerhire-email-assets.s3-ap-southeast-2.amazonaws.com/lth-logo-dark-font-on-transparent-bg.png" width="311" height="39" />
+                </a>
               </td>
             </tr>
             <!-- Email Body -->
@@ -453,8 +454,8 @@
                   <tr>
                     <td class="content-cell">
                       <div class="f-fallback">
-                        <h1>Welcome, {{name}}!</h1>
-                        <p>Thanks for trying [Product Name]. We’re thrilled to have you on board. To get the most out of [Product Name], do this primary next step:</p>
+                        <h1>G'day, {{recipient.first-name}}!</h1>
+                        <p>Thank you for joining localtrailerhire.com.au. We’re thrilled to have you on board. To complete your signup please verify your email:  </p>
                         <!-- Action -->
                         <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
@@ -464,14 +465,15 @@
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
                                 <tr>
                                   <td align="center">
-                                    <a href="{{action_url}}" class="f-fallback button" target="_blank">Do this Next</a>
+                                    <a href="{{marketplace.url}}/verify-email?t={{form-encode email-verification.token}}" class="f-fallback button" target="_blank">Verify email address</a>
                                   </td>
                                 </tr>
                               </table>
                             </td>
                           </tr>
                         </table>
-                        <p>For reference, here's your login information:</p>
+                        <p>This link will expire in two days but you can always request a new verification link. </p>
+                        <p>For reference, here's a link to the login page:</p>
                         <table class="attributes" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
                             <td class="attributes_content">
@@ -479,14 +481,7 @@
                                 <tr>
                                   <td class="attributes_item">
                                     <span class="f-fallback">
-              <strong>Login Page:</strong> {{login_url}}
-            </span>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="attributes_item">
-                                    <span class="f-fallback">
-              <strong>Username:</strong> {{username}}
+              <strong>Login Page:</strong> <a href="{{marketplace.url}}/login">{{marketplace.url}}/login</a>
             </span>
                                   </td>
                                 </tr>
@@ -494,39 +489,15 @@
                             </td>
                           </tr>
                         </table>
-                        <p>You've started a {{trial_length}} day trial. You can upgrade to a paying account or cancel any time.</p>
-                        <table class="attributes" width="100%" cellpadding="0" cellspacing="0" role="presentation">
-                          <tr>
-                            <td class="attributes_content">
-                              <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
-                                <tr>
-                                  <td class="attributes_item">
-                                    <span class="f-fallback">
-              <strong>Trial Start Date:</strong> {{trial_start_date}}
-            </span>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="attributes_item">
-                                    <span class="f-fallback">
-              <strong>Trial End Date:</strong> {{trial_end_date}}
-            </span>
-                                  </td>
-                                </tr>
-                              </table>
-                            </td>
-                          </tr>
-                        </table>
-                        <p>If you have any questions, feel free to <a href="mailto:{{support_email}}">email our customer success team</a>. (We're lightning quick at replying.) We also offer <a href="{{live_chat_url}}">live chat</a> during business hours.</p>
-                        <p>Thanks,
-                          <br>[Sender Name] and the [Product Name] Team</p>
-                        <p><strong>P.S.</strong> Need immediate help getting started? Check out our <a href="{{help_url}}">help documentation</a>. Or, just reply to this email, the [Product Name] support team is always ready to help!</p>
+                        <p>Cheers,
+                          <br>Duncan & Robin (the Local Trailer Hire Team)</p>
+                        <p><strong>P.S.</strong> Need help getting started? Check out our <a href="{{marketplace.url}}/faq">FAQ</a> or the <a href="{{marketplace.url}}/hiring">Hiring</a> or <a href="{{marketplace.url}}/sharing">Sharing</a> info pages. Or, just reply to this email – we're always happy to help!</p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">
                           <tr>
                             <td>
-                              <p class="f-fallback sub">If you’re having trouble with the button above, copy and paste the URL below into your web browser.</p>
-                              <p class="f-fallback sub">{{action_url}}</p>
+                              <p class="f-fallback sub">If you’re having trouble with the button above, copy and paste the link below into your web browser.</p>
+                              <p class="f-fallback sub">{{marketplace.url}}/verify-email?t={{form-encode email-verification.token}}</p>
                             </td>
                           </tr>
                         </table>
@@ -541,11 +512,12 @@
                 <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
                   <tr>
                     <td class="content-cell" align="center">
-                      <p class="f-fallback sub align-center">&copy; 2019 [Product Name]. All rights reserved.</p>
+                      <p class="f-fallback sub align-center">Sent from localtrailerhire.com.au HQ</p>
                       <p class="f-fallback sub align-center">
-                        [Company Name, LLC]
-                        <br>1234 Street Rd.
-                        <br>Suite 1234
+                        The Local Hire Group Pty Ltd, <br/>
+                        30 Smart Street, <br/>
+                        Hawthorn VIC 3122. <br/>
+                        ABN: 60 631 399 981.
                       </p>
                     </td>
                   </tr>
